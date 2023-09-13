@@ -1,6 +1,6 @@
 FROM caddy:builder-alpine AS builder
 
-RUN go env -w GOPROXY=https://goproxy.io,direct
+RUN go env -w GOPROXY=https://goproxy.cn,direct
 
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
