@@ -4,8 +4,7 @@ RUN go env -w GOPROXY=https://goproxy.cn,direct
 
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
-    --with github.com/mholt/caddy-webdav \
-    --with github.com/mastercactapus/caddy2-proxyprotocol
+    --with github.com/mholt/caddy-webdav
 
 FROM caddy:alpine
 

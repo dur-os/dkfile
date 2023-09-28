@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Docker login
+      uses: docker/login-action@v3.0.0
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }} 
+    - uses: actions/checkout@v3
+    - name: go cfwarp and build cfwarp
+      run: | 
+        cd cfwarp
+        docker build . --file Dockerfile --tag luckysnow/cfwarp:latest
+    - name: push  cfwarp
+      run: docker push luckysnow/cfwarp:latest
