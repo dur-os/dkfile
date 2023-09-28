@@ -19,9 +19,9 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }} 
     - uses: actions/checkout@v3
-    - name: go caddy
-      run: cd caddy
-    - name: build caddy
-      run: docker build . --file Dockerfile --tag luckysnow/caddy:latest
+    - name: go caddy and build caddy
+      run: | 
+        cd caddy
+        docker build . --file Dockerfile --tag luckysnow/caddy:latest
     - name: push  caddy
       run: docker push luckysnow/caddy:latest
