@@ -19,6 +19,6 @@ if [[ -n $WARP_LICENSE ]]; then
   warp-cli --accept-tos set-license "${WARP_LICENSE}"
 fi
 warp-cli --accept-tos connect
-nohup ./checkip.sh  &
+# nohup ./checkip.sh  &
 socat tcp-listen:1080,reuseaddr,fork tcp:localhost:40000 &
 fg %1
