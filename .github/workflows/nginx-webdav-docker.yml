@@ -23,8 +23,8 @@ jobs:
         curl -o Dockerfile https://raw.githubusercontent.com/nginx/docker-nginx/master/modules/Dockerfile.alpine
         mkdir dav_ext_methods
         echo "https://github.com/arut/nginx-dav-ext-module/archive/refs/tags/v3.0.0.tar.gz" > dav_ext_methods/source
-        docker-compose up --build -d
+        docker compose up --build -d
         cd ..
         docker build . --file Dockerfile --tag luckysnow/nginx-webdav:latest
-    - name: push  nginx-webdav
+    - name: push nginx-webdav
       run: docker push luckysnow/nginx-webdav:latest
