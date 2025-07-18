@@ -22,6 +22,7 @@ jobs:
         cd nginx-webdav/base-nginx
         curl -o Dockerfile https://raw.githubusercontent.com/nginx/docker-nginx/master/modules/Dockerfile.alpine
         sed -i 's/libxml2-utils/libxml2-utils libxml2 libxslt-dev/g' Dockerfile
+        sed -i 's/       done/       done\nRUN apk add --update bash apache2-utils \&\& rm -rf \/var\/cache\/apk\/\*/g' Dockerfile
         mkdir dav_ext_methods
         echo "https://github.com/arut/nginx-dav-ext-module/archive/refs/tags/v3.0.0.tar.gz" > dav_ext_methods/source
         docker compose up --build -d
