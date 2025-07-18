@@ -20,8 +20,7 @@ jobs:
     - name: build nginx-webdav
       run: | 
         cd nginx-webdav/base-nginx
-        curl -o Dockerfile https://raw.githubusercontent.com/nginx/docker-nginx/master/modules/Dockerfile.alpine
-        sed -i 's/libxslt/libxslt libxml2 libxslt-dev/g' Dockerfile
+        curl -o Dockerfile https://raw.githubusercontent.com/nginx/docker-nginx/master/modules/Dockerfile
         mkdir dav_ext_methods
         echo "https://github.com/arut/nginx-dav-ext-module/archive/refs/tags/v3.0.0.tar.gz" > dav_ext_methods/source
         docker compose up --build -d
