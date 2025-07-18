@@ -21,7 +21,8 @@ jobs:
       run: | 
         cd nginx-webdav/base-nginx
         curl -o Dockerfile https://raw.githubusercontent.com/nginx/docker-nginx/master/modules/Dockerfile
-        sed -i 's/libxml2-utils/libxml2-utils libxml2 libxslt-dev apache2-utils/g' Dockerfile
+        sed -i 's/libxml2-utils/libxml2-utils libxml2 libxslt-dev/g' Dockerfile
+        sed -i 's/apt-get update \\/apt-get update \\\n    && apache2-utils\\/g' Dockerfile
         mkdir dav_ext_methods
         echo "https://github.com/arut/nginx-dav-ext-module/archive/refs/tags/v3.0.0.tar.gz" > dav_ext_methods/source
         docker compose up --build -d
